@@ -6,7 +6,15 @@ export const userType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
+      name: 'username',
+      type: 'string',
+    }),
+    defineField({
+      name: 'email',
+      type: 'string',
+    }),
+    defineField({
+      name: 'password',
       type: 'string',
     }),
     defineField({
