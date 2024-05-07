@@ -1,10 +1,13 @@
 /* Imports. */
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { readClient as client } from "./SanityClient"
 import '../styles/LoginUser.scss'
 
 export default function LoginUser() {
 
+    const navigate = useNavigate()
+    
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -34,6 +37,8 @@ export default function LoginUser() {
             }
 
             document.getElementById("loginUserForm").reset()
+
+            navigate("/dashboard")
         }
     }
 
