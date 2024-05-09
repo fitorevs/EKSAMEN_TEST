@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import { readClient as client } from "./SanityClient"
 import { authenticate } from "./AuthenticateUser"
-import { FaAddressBook  } from "react-icons/fa6";
+
+import { FaCirclePlus, FaFaceGrinHearts } from "react-icons/fa6";
+
 export default function Frontpage() {
     authenticate()
 
@@ -107,6 +109,8 @@ export default function Frontpage() {
             .username og .identificator
             er attributene, siden disse er de eneste verdiene vi behøver
 
+
+            men trenger ikke [0] hvis du bruker .map ??
         */
     }
     
@@ -122,9 +126,33 @@ export default function Frontpage() {
             <h2>Hei {user?.username}</h2>
             <section>
                 <p>Filmer jeg skal se!</p>
+                {user?.parsedFavorites.order.map((thisMovie, index) =>
+                    <Link key={`movie${index}`} to={`/`}>
+                        <article>
+                            <p>{user.parsedFavorites[thisMovie].name}</p>
+                            <img src={"https://placehold.co/400x400"}/>
+                            <section>
+                                <FaCirclePlus />
+                                <FaFaceGrinHearts />
+                            </section>
+                        </article>
+                    </Link>
+                )}
             </section>
             <section>
                 <p>Disse filmene ligger i ønskelisten din:</p>
+                {user?.parsedWishlist.order.map((thisMovie, index) =>
+                    <Link key={`movie${index}`} to={`/`}>
+                        <article>
+                            <p>{user.parsedWishlist[thisMovie].name}</p>
+                            <img src={"https://placehold.co/400x400"}/>
+                            <section>
+                                <FaCirclePlus />
+                                <FaFaceGrinHearts />
+                            </section>
+                        </article>
+                    </Link>
+                )}
             </section>
             <section>
                 Jeg skal se sammen med...
