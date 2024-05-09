@@ -6,11 +6,23 @@ export const userType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
+      name: 'username',
       type: 'string',
     }),
     defineField({
-      name: 'favorittFilmer',
+      name: 'email',
+      type: 'string',
+    }),
+    defineField({
+      name: 'password',
+      type: 'string',
+    }),
+    defineField({
+      name: 'identificator',
+      type: 'string',
+    }),
+    defineField({
+      name: 'savedMovies',
       type: 'array',
       of: [
         {
@@ -22,7 +34,7 @@ export const userType = defineType({
       ]
     }),
     defineField({
-      name: 'favorittSjangere',
+      name: 'savedGenres',
       type: 'array',
       of: [
         {
