@@ -2,6 +2,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import Main from '../layouts/Main'
 import CreateUser from './CreateUser'
 import LoginUser from './LoginUser'
+import Redirect from './Redirect'
 import Frontpage from './Frontpage'
 import Dashboard from './Dashboard'
 
@@ -11,8 +12,9 @@ export default function BuildRoutes() {
             <Route path="/" element={<Main />}>
                 <Route path="/new" element={<CreateUser />} />
                 <Route path="/login" element={<LoginUser />} />
+                <Route path="/redirect" element={<Redirect />} />
                 <Route path="/frontpage" element={<Frontpage />} />
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard:slug" element={<Dashboard />} />
 
                 <Route index element={<Navigate to="/frontpage" />} />
                 

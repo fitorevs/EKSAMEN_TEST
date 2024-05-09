@@ -2,7 +2,6 @@ import {movieArray} from './movieArray'
 import {movieType} from './movieType'
 import {genresArray} from './genresArray'
 import {genresType} from './genresType'
-import {userArray} from './userArray'
 import {userType} from './userType'
 
 export const schemaTypes = [
@@ -10,6 +9,5 @@ export const schemaTypes = [
     movieType,
     genresArray,
     genresType,
-    userArray,
     userType
 ]
