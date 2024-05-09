@@ -7,7 +7,6 @@ import '../styles/LoginUser.scss'
 export default function LoginUser() {
 
     const navigate = useNavigate()
-    
     const [user, setUser] = useState({
         username: "",
         password: ""
@@ -32,13 +31,15 @@ export default function LoginUser() {
             
             const userSearch = users.find((thisUser) => thisUser.username == user.username && thisUser.password == user.password)
             
-            if (userSearch !== "undefined") {
-                localStorage.setItem("authenticated", true);
+            const identificator = userSearch.identificator
+
+            if (userSearch !== undefined) {
+                localStorage.setItem("authenticated", true)
+                localStorage.setItem("identificator", identificator)
             }
 
             document.getElementById("loginUserForm").reset()
-
-            navigate("/dashboard")
+            /*navigate("/frontpage")*/
         }
     }
 

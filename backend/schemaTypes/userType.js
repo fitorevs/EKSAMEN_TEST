@@ -18,7 +18,11 @@ export const userType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'favorittFilmer',
+      name: 'identificator',
+      type: 'string',
+    }),
+    defineField({
+      name: 'savedMovies',
       type: 'array',
       of: [
         {
@@ -30,7 +34,7 @@ export const userType = defineType({
       ]
     }),
     defineField({
-      name: 'favorittSjangere',
+      name: 'savedGenres',
       type: 'array',
       of: [
         {

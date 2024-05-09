@@ -1,6 +1,7 @@
 /* Imports. */
 import { useState } from "react"
 import { writeClient as client } from "./SanityClient"
+import { v4 as uuid4 } from "uuid"
 
 /* Funksjon for å lage ny bruker. */
 export default function CreateUser() {
@@ -9,7 +10,8 @@ export default function CreateUser() {
     const [user, setUser] = useState({
         username: "",
         email: "",
-        password: ""
+        password: "",
+        identificator: ""
     })
 
     /* Funksjon som kjører hvis formen forsøkes å bli submitted, altså ungå at den blir tømt om vi ikke ønsker det. */
@@ -33,7 +35,8 @@ export default function CreateUser() {
                 _type: 'bruker',
                 username: user.username,
                 email: user.email,
-                password: user.password
+                password: user.password,
+                identificator: uuid4()
             }
             
             /* 
@@ -47,6 +50,40 @@ export default function CreateUser() {
                 console.log(`User was created, document ID is ${result._id}`)
                 userID = result._id
             })
+
+            const movieArray = {
+                name: 'filmer',
+                title: 'Filmer',
+                type: 'document',
+                fields: [
+                    {
+                        name: 'list',
+                        type: 'array',
+                        of: [
+                            {
+                            type: 'object',
+                            fields: [
+                                {
+                                    name: 'film',
+                                    type: 'reference',
+                                    to: [{type: 'film'}]
+                                },
+                                {
+                                    name: 'inWishlist',
+                                    type: 'boolean',
+                                    title: 'I Ønskeliste'
+                                },
+                                {
+                                    name: 'isFavorite',
+                                    type: 'boolean',
+                                    title: 'Er Favoritt'
+                                }
+                            ]
+                            }
+                        ]
+                    }
+                ]
+            }
 
             /* Vi forventer at det finnes bare en bruker array. Vi henter ID-en for den første (0) av dem. */
             /*
